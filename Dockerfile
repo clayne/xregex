@@ -10,4 +10,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt -y install \
     clang \
     llvm \
     gdb \
-    lldb
+    lldb \
+    libboost-all-dev \
+    libgtest-dev \
+    libgmock-dev
