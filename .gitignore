@@ -2,3 +2,7 @@
 # Ignore editor-specific files
 .vscode/
 .devcontainer/
+
+# Ignore generated build output
+build/
+cmake_build_*/
