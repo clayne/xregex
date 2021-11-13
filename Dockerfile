@@ -8,6 +8,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt -y install \
     build-essential \
     cmake \
     clang \
+    doxygen \
     llvm \
     gdb \
     lldb \
