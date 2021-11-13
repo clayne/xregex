@@ -306,12 +306,21 @@ private:
     /// The root of the tree
     RangedTreeNode* _root;
 
+    /// The Tree Node instances to accelerate
+    std::vector<RangedTreeNode> _instances;
+
     /**
      * @brief Insert a single element into the tree.
      * 
      * @param entry The element to insert.
      */
     void _insert(const SingleEntry& entry);
+
+    /**
+     * @brief Insert a range into the tree.
+     * 
+     * @param entry The element to insert.
+     */
     void _insert(const RangedEntry& entry);
 
 public:
