@@ -11,4 +11,6 @@ add_executable(common_test
 target_link_libraries(common_test
     common
     gtest
+    gtest_main
+    pthread
 )

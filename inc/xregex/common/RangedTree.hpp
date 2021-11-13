@@ -143,7 +143,7 @@ private:
          * 
          * @param value The value to add to the node.
          */
-        RangedTreeNode(const T &value);
+        RangedTreeNode(const T value);
 
         /**
          * @brief Construct a `RangedTreeNode` given a certain tag.
@@ -173,7 +173,7 @@ private:
          * 
          * @param other The other instance.
          */
-        RangedTreeNode(RangedTreenode&& other) noexcept;
+        RangedTreeNode(RangedTreeNode&& other) noexcept;
 
         /**
          * @brief Destructor.
@@ -188,7 +188,7 @@ private:
          * 
          * @return Type The node type.
          */
-        inline Type type() const noexcept { return _type; }
+        inline Type type() const noexcept { return _node_type; }
 
         /**
          * @brief Gets the value.
@@ -306,8 +306,6 @@ private:
     /// The root of the tree
     RangedTreeNode* _root;
 
-    /// The Tree Node instances to accelerate
-    std::vector<RangedTreeNode> _instances;
 
     /**
      * @brief Insert a single element into the tree.
