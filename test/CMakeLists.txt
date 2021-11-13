@@ -1,6 +1,7 @@
 
 file(
     GLOB common_test_SRC
+    "common/*.cpp"
 )
 
 add_executable(common_test
