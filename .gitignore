@@ -6,3 +6,6 @@
 # Ignore generated build output
 build/
 cmake_build_*/
+
+# Ignore document files
+docs/

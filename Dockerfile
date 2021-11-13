@@ -11,6 +11,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt -y install \
     doxygen \
     llvm \
     gdb \
+    graphviz \
     lldb \
     libboost-all-dev \
     libgtest-dev \
