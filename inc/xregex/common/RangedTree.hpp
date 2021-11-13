@@ -12,6 +12,8 @@
 #include <cstdint>
 #include <optional>
 #include <utility>
+#include <variant>
+#include <vector>
 
 namespace xregex::common
 {
@@ -80,6 +82,8 @@ public:
         { }
     };
 
+    /// Group the entries together for convenience
+    typedef std::variant<SingleEntry, RangedEntry> Entry;
 
 private:
 
@@ -299,27 +303,86 @@ private:
 
     };
 
+    /// The root of the tree
     RangedTreeNode* _root;
 
-    void _insert_node(RangedTreeNode *node);
+    /**
+     * @brief Insert a single element into the tree.
+     * 
+     * @param entry The element to insert.
+     */
+    void _insert(const SingleEntry& entry);
+    void _insert(const RangedEntry& entry);
 
 public:
 
+    /**
+     * @brief Construct a new empty ranged tree.
+     * 
+     */
     RangedTree();
 
+    /**
+     * @brief Construct a RangedTree populated with the elements pro
+     * 
+     * @param elements 
+     */
+    RangedTree(const std::vector<Entry>& elements);
+
+
+    /**
+     * @brief Copy constructor.
+     * 
+     * @param other The other instance.
+     */
     RangedTree(const RangedTree& other);
+
+    /**
+     * @brief Move constructor.
+     * 
+     * @param other The other instance.
+     */
     RangedTree(RangedTree&& other) noexcept;
 
+    /**
+     * @brief Destructor.
+     * 
+     */
     ~RangedTree();
 
+
+    /**
+     * @brief Checks whether the object is valid within this tree.
+     * 
+     * @param obj The object to check.
+     * @return bool Whether the object is in this tree.
+     */
     bool contains(const T obj) const;
 
-    void insert(const SingleEntry& entry);
-    void insert(const RangedEntry& entry);
 
+    /**
+     * @brief Copy assignment operator.
+     * 
+     * @param other The other instance.
+     * @return RangedTree& This instance.
+     */
     RangedTree& operator=(const RangedTree& other);
+
+    /**
+     * @brief Move assignment operator.
+     * 
+     * @param other The other instance.
+     * @return RangedTree& This instance.
+     */
     RangedTree& operator=(RangedTree&& other) noexcept;
 
+
+    /**
+     * @brief Convenience operator for tree lookup.
+     * 
+     * @param obj The object to search for.
+     * @return bool If the object is in the tree.
+     */
     bool operator[](const T obj) const;
 
 };
